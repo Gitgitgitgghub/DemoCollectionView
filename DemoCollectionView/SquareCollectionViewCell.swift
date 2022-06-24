@@ -7,11 +7,15 @@
 
 import UIKit
 
-class SectionOneCollectionViewCell: UICollectionViewCell {
+class SquareCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    override func layoutSubviews() {
+        layer.cornerRadius = 5
     }
 
 }
