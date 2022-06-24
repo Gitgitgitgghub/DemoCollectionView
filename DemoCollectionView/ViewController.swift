@@ -52,25 +52,31 @@ extension ViewController :UICollectionViewDataSource, UICollectionViewDelegateFl
         }
     }
     
-    /// 指的是在某一個section的某一個item要回傳哪一種cell
-    /// 有點像Android裡面onCreateViewHolder + onBindViewHolder的合體，差別在Cell實例化並非我們控制
+    ///指的是在某一個section的某一個item要回傳哪一種cell ＋ 綁定資料給cell
+    ///有點像Android裡面getItemType + onCreateViewHolder + onBindViewHolder全部一起做的感覺。
+    ///要同時決定某section的某位置要用哪種cell，也必須同時在這邊做cell資料的綁定…
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let section = sections[indexPath.section]
+        var cell: UICollectionViewCell? = nil
         switch section {
         case .Square:
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SquareCollectionViewCell", for: indexPath) as? SquareCollectionViewCell{
-                return cell
+            if indexPath.item == 0 {
+                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CircleCollectionViewCell", for: indexPath) as? CircleCollectionViewCell
+            }else {
+                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SquareCollectionViewCell", for: indexPath) as? SquareCollectionViewCell
             }
         case .Circle:
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CircleCollectionViewCell", for: indexPath) as? CircleCollectionViewCell{
-                return cell
+            if indexPath.item == 0 {
+                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SquareCollectionViewCell", for: indexPath) as? SquareCollectionViewCell
+            }else {
+                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CircleCollectionViewCell", for: indexPath) as? CircleCollectionViewCell
             }
         }
-        return UICollectionViewCell()
+        return cell ?? UICollectionViewCell()
     }
     
     /// 指的是“整個”section在collectionView的距離
-    /// 例如想要第一個item距離螢幕邊框５必須在這邊設定
+    /// 例如左上方的item與header和collectionView左側的距離
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
     }
@@ -93,7 +99,7 @@ extension ViewController :UICollectionViewDataSource, UICollectionViewDelegateFl
     
     /// item“之間”的最小距離
     /// minimumLineSpacingForSectionAt
-    /// 在collectionView滾動方向為垂直時，指的是上下兩個item“之間最小”的距離，反之亦然
+    /// 在collectionView滾動方向為垂直時，指的是上下兩個item“之間最小”的距離，反之亦然，如果你的cell大小不夠是會大於這個距離的。
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }
