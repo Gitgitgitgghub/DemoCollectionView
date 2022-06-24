@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     private func setupCollectionView() {
         collectionView.register(UINib(nibName: "BlackHeaderCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "BlackHeaderCollectionReusableView")
         collectionView.register(UINib(nibName: "WhiteHeaderCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "WhiteHeaderCollectionReusableView")
+        collectionView.register(UINib(nibName: "FooterCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "FooterCollectionReusableView")
         collectionView.register(UINib(nibName: "SquareCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SquareCollectionViewCell")
         collectionView.register(UINib(nibName: "CircleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CircleCollectionViewCell")
         collectionView.delegate = self
@@ -121,12 +122,13 @@ extension ViewController :UICollectionViewDataSource, UICollectionViewDelegateFl
     ///footer大小
     ///用法跟referenceSizeForHeaderInSection一樣
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize.zero
+        return CGSize(width: UIScreen.main.bounds.width, height: 45)
     }
     
     ///與cellForItemAt很相似
     ///多提供了一個kind給你判斷是header或footer
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        print("viewForSupplementaryElementOfKind \(kind)")
         if kind == UICollectionView.elementKindSectionHeader {
             switch indexPath.section % 2 {
             case 0:
@@ -141,7 +143,7 @@ extension ViewController :UICollectionViewDataSource, UICollectionViewDelegateFl
                 fatalError("見鬼了！")
             }
         }else {
-            return UICollectionReusableView()
+            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "FooterCollectionReusableView", for: indexPath) as! FooterCollectionReusableView
         }
     }
     
