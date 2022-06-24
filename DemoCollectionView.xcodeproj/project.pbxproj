@@ -13,6 +13,8 @@
 		9440E3EE285B0ECF00D9E850 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9440E3EC285B0ECF00D9E850 /* Main.storyboard */; };
 		9440E3F0285B0ED000D9E850 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9440E3EF285B0ED000D9E850 /* Assets.xcassets */; };
 		9440E3F3285B0ED000D9E850 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9440E3F1285B0ED000D9E850 /* LaunchScreen.storyboard */; };
+		9440E3FC285B146900D9E850 /* SectionOneCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9440E3FA285B146900D9E850 /* SectionOneCollectionViewCell.swift */; };
+		9440E3FD285B146900D9E850 /* SectionOneCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9440E3FB285B146900D9E850 /* SectionOneCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		9440E3EF285B0ED000D9E850 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9440E3F2285B0ED000D9E850 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9440E3F4285B0ED000D9E850 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9440E3FA285B146900D9E850 /* SectionOneCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionOneCollectionViewCell.swift; sourceTree = "<group>"; };
+		9440E3FB285B146900D9E850 /* SectionOneCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionOneCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				9440E3EF285B0ED000D9E850 /* Assets.xcassets */,
 				9440E3F1285B0ED000D9E850 /* LaunchScreen.storyboard */,
 				9440E3F4285B0ED000D9E850 /* Info.plist */,
+				9440E3FA285B146900D9E850 /* SectionOneCollectionViewCell.swift */,
+				9440E3FB285B146900D9E850 /* SectionOneCollectionViewCell.xib */,
 			);
 			path = DemoCollectionView;
 			sourceTree = "<group>";
@@ -127,6 +133,7 @@
 			files = (
 				9440E3F3285B0ED000D9E850 /* LaunchScreen.storyboard in Resources */,
 				9440E3F0285B0ED000D9E850 /* Assets.xcassets in Resources */,
+				9440E3FD285B146900D9E850 /* SectionOneCollectionViewCell.xib in Resources */,
 				9440E3EE285B0ECF00D9E850 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,6 +148,7 @@
 				9440E3EB285B0ECF00D9E850 /* ViewController.swift in Sources */,
 				9440E3E7285B0ECF00D9E850 /* AppDelegate.swift in Sources */,
 				9440E3E9285B0ECF00D9E850 /* SceneDelegate.swift in Sources */,
+				9440E3FC285B146900D9E850 /* SectionOneCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
