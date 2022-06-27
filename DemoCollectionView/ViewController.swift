@@ -128,22 +128,23 @@ extension ViewController :UICollectionViewDataSource, UICollectionViewDelegateFl
     ///與cellForItemAt很相似
     ///多提供了一個kind給你判斷是header或footer
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        print("viewForSupplementaryElementOfKind \(kind)")
-        if kind == UICollectionView.elementKindSectionHeader {
-            switch indexPath.section % 2 {
-            case 0:
+        print("viewForSupplementaryElementOfKind: \(kind)")
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            if indexPath.section % 2 == 0 {
                 let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "BlackHeaderCollectionReusableView", for: indexPath) as! BlackHeaderCollectionReusableView
                 header.bind(sectionNumber: indexPath.section)
                 return header
-            case 1:
+            }else {
                 let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "WhiteHeaderCollectionReusableView", for: indexPath) as! WhiteHeaderCollectionReusableView
                 header.bind(sectionNumber: indexPath.section)
                 return header
-            default:
-                fatalError("見鬼了！")
             }
-        }else {
-            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "FooterCollectionReusableView", for: indexPath) as! FooterCollectionReusableView
+        case UICollectionView.elementKindSectionFooter:
+            let footer =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "FooterCollectionReusableView", for: indexPath)
+            return footer
+        default:
+            return UICollectionReusableView()
         }
     }
     
