@@ -7,8 +7,9 @@
 
 import UIKit
 
-class CircleCollectionViewCell: SquareCollectionViewCell {
+class CircleCollectionViewCell: SquareCollectionViewCell{
 
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -18,4 +19,10 @@ class CircleCollectionViewCell: SquareCollectionViewCell {
         layer.cornerRadius = frame.size.width * 0.5
     }
 
+}
+
+struct CircleCellModel {
+    
+    let shape = "Circle"
+    
 }

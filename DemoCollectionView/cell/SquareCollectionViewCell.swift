@@ -7,8 +7,10 @@
 
 import UIKit
 
-class SquareCollectionViewCell: UICollectionViewCell {
-
+class SquareCollectionViewCell: UICollectionViewCell, CellDataProtocol{
+    
+    var cellData: AnyObject?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -18,4 +20,10 @@ class SquareCollectionViewCell: UICollectionViewCell {
         layer.cornerRadius = 5
     }
 
+}
+
+struct SquareCellModel {
+    
+    let shape = "Square"
+    
 }

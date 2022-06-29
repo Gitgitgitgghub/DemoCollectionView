@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UyB-UN-te6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UyB-UN-te6">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -64,18 +64,27 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSA-Tu-nqT">
+                                <rect key="frame" x="20" y="811" width="100" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="打亂section"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vOG-dE-e5L"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="gOf-wH-ssA" firstAttribute="top" secondItem="vOG-dE-e5L" secondAttribute="top" id="30f-DN-RSg"/>
                             <constraint firstItem="vOG-dE-e5L" firstAttribute="trailing" secondItem="gOf-wH-ssA" secondAttribute="trailing" id="8dl-IX-KfR"/>
+                            <constraint firstItem="oSA-Tu-nqT" firstAttribute="leading" secondItem="gOf-wH-ssA" secondAttribute="leading" constant="20" id="An7-re-9Qf"/>
                             <constraint firstItem="gOf-wH-ssA" firstAttribute="leading" secondItem="vOG-dE-e5L" secondAttribute="leading" id="PIy-Yf-lJq"/>
                             <constraint firstItem="vOG-dE-e5L" firstAttribute="bottom" secondItem="gOf-wH-ssA" secondAttribute="bottom" id="agH-Rf-7lZ"/>
+                            <constraint firstItem="vOG-dE-e5L" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oSA-Tu-nqT" secondAttribute="trailing" symbolic="YES" id="fJb-rt-gbA"/>
+                            <constraint firstItem="oSA-Tu-nqT" firstAttribute="bottom" secondItem="gOf-wH-ssA" secondAttribute="bottom" constant="-20" id="fLW-dH-hux"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="gOf-wH-ssA" id="1Gb-PF-d0m"/>
+                        <outlet property="randomSectionBtn" destination="oSA-Tu-nqT" id="ZdZ-hP-cRK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r3X-qz-V7Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

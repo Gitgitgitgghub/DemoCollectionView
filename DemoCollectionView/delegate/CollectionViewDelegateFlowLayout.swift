@@ -16,10 +16,7 @@ enum CollectionViewSection :CaseIterable {
     case Circle
 }
 
-class CollectionViewDelegateFlowLayout: NSObject, UICollectionViewDelegateFlowLayout {
-    
-    var sections: [CollectionViewSection] = []
-    var rxDataSource :RxCollectionViewSectionedReloadDataSource<SectionModel<CollectionViewSection,Any>>?
+extension RxCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     /// 指的是“整個”section在collectionView的距離
     /// 例如左上方的item與header和collectionView左側的距離
@@ -32,25 +29,15 @@ class CollectionViewDelegateFlowLayout: NSObject, UICollectionViewDelegateFlowLa
     ///Square：４
     ///Circle：３
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let section = getCollectionViewSection(indexPath: indexPath)
+        guard indexPath.section < sections.value.count else { return CGSize.zero }
+        let section = sections.value[indexPath.section]
         switch section {
         case .Square:
-            let size = (UIScreen.main.bounds.width - 15 * 2 - 5 * 3) / 4
+            let size = ((UIScreen.main.bounds.width - 15 * 2 - 5 * 3) / 4) - 1
             return CGSize(width: size, height: size)
         case .Circle:
-            let size = (UIScreen.main.bounds.width - 15 * 2 - 5 * 2) / 3
+            let size = ((UIScreen.main.bounds.width - 15 * 2 - 5 * 2) / 3) - 1
             return CGSize(width: size, height: size)
-        default:
-            return CGSize.zero
-        }
-    }
-    
-    func getCollectionViewSection(indexPath: IndexPath) -> CollectionViewSection? {
-        if let rxDataSource = rxDataSource {
-            return rxDataSource.sectionModels[indexPath.section].model
-        }else {
-            guard indexPath.section < sections.count else { return nil }
-            return sections[indexPath.section]
         }
     }
     
@@ -67,7 +54,7 @@ class CollectionViewDelegateFlowLayout: NSObject, UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
-
+    
     /// header大小
     /// 目前測試垂直滾動只有height會生效，水平滾動只有width生效
     /// 設定大小要滾動方向決定設定width或height
@@ -80,4 +67,6 @@ class CollectionViewDelegateFlowLayout: NSObject, UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: 45)
     }
+    
+    
 }
