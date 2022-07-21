@@ -1,6 +1,10 @@
 
 import UIKit
 
+enum CollectionViewSection {
+    case Square
+    case Circle
+}
 
 
 class NormalCollectionViewController: UIViewController {

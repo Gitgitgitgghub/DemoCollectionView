@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SquareCollectionViewCell: UICollectionViewCell, CellDataProtocol{
+class SquareCollectionViewCell: UICollectionViewCell {
     
     var cellData: AnyObject?
     
